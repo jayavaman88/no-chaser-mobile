@@ -1,11 +1,30 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, FlatList } from 'react-native';
 
 export default class DrinkList extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
+
     return (
       <View style={styles.list}>
-        <Text style={styles.title}>No Chaser Title</Text>
+        {this.props.drinks.length > 0 ?
+        <FlatList
+          style={styles.drinkList}
+          data={this.props.drinks}
+          renderItem={({item}) => {
+            return (
+              <View style={styles.textWrapper}>
+                <Text style={styles.text}>{item.key}</Text>
+              </View>
+            );
+
+          }}
+        /> :
+        <Text>🙁 Sorry, drink not found. Have you had too many to drink?</Text>
+        }
       </View>
     );
   }
@@ -18,7 +37,19 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  title: {
+  drinkList: {
+    width: '100%',
+  },
+  textWrapper: {
+    borderStyle: 'solid',
+    borderColor: '#FFFFFF',
+    borderBottomWidth: 1,
+  },
+  text: {
     color: '#FFFFFF',
+    padding: 50,
+    fontSize: 24,
+    width: '100%',
+    textAlign: 'center',
   }
 });

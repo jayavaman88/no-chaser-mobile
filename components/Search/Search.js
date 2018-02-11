@@ -3,28 +3,11 @@ import { StyleSheet, Text, TextInput, View } from 'react-native';
 
 export default class Search extends React.Component {
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      searchInputText: '',
-    }
-
-    this.handleOnChangeText = this.handleOnChangeText.bind(this);
-  }
-
-
-  handleOnChangeText(searchInputText) {
-    this.setState({
-      searchInputText,
-    });
-  }
-
   render() {
+    const { handleOnChangeText, searchInputText } = this.props;
     return (
       <View style={styles.search}>
-        <TextInput placeholder="Find your drink and Cheers!" onChangeText={this.handleOnChangeText} />
-        <Text>{this.state.searchInputText}</Text> 
+        <TextInput placeholder="Find your drink and Cheers!" onChangeText={handleOnChangeText} />
       </View>
     )
   }
