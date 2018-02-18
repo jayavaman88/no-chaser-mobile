@@ -17,7 +17,7 @@ export default class DrinkList extends React.Component {
           renderItem={({item}) => {
             return (
               <View style={styles.textWrapper}>
-                <Text style={styles.text}>{item.key}</Text>
+                <Text style={styles.text}>{item.name}</Text>
               </View>
             );
 
